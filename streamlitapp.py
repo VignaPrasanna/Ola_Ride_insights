@@ -8,7 +8,7 @@ def get_db_connection():
   # Connects to an in-memory DuckDB instance and registers your CSV as a table named 'ola_rides'
   con = duckdb.connect(database=":memory:", read_only=False)
   # Read the CSV using pandas and register it as a virtual SQL table
-  df = pd.read_csv("ola_ride_insights_dataset.csv")
+  df = pd.read_csv("ola_ride_insights_dataset.csv", sep=";")
   df.columns = df.columns.str.strip()
   con.register("ola_rides", df)
   return con
