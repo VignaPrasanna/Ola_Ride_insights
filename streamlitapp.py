@@ -48,7 +48,7 @@ query_choice = st.selectbox("Select a query to view the results:", [
     "All incomplete rides along with the reason"
     
 ])
-st.write(df.columns.tolist())
+#st.write(df.columns.tolist())
 if query_choice == "All Successful Bookings":
   st.title("All Successful Bookings")
   df1 = df[df["Booking_Status"] == "Success"]  # Check exact column casing
