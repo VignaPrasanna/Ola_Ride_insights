@@ -9,6 +9,7 @@ def get_db_connection():
   con = duckdb.connect(database=":memory:", read_only=False)
   # Read the CSV using pandas and register it as a virtual SQL table
   df = pd.read_csv("ola_ride_insights_dataset.csv")
+  df.columns = df.columns.str.strip()
   con.register("ola_rides", df)
   return con
 
@@ -47,7 +48,7 @@ query_choice = st.selectbox("Select a query to view the results:", [
     "All incomplete rides along with the reason"
     
 ])
-
+st.write(df.columns.tolist())
 if query_choice == "All Successful Bookings":
   st.title("All Successful Bookings")
   df1 = df[df["Booking_Status"] == "Success"]  # Check exact column casing
