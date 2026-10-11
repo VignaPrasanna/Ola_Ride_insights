@@ -14,6 +14,8 @@ def get_db_connection():
 
 
 con = get_db_connection()
+
+df = con.execute("SELECT * FROM ola_rides").df()
 #def get_mysql_engine():
 #    username = "root"          
 #    password = "shoulderblade" 
